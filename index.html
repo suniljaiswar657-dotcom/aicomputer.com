@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Device</title>
+</head>
+<body>
+
+<h2>AI Device</h2>
+
+<input id="input" placeholder="Ask something..." />
+<button onclick="send()">Send</button>
+
+<p id="output"></p>
+
+<script>
+async function send() {
+  let query = document.getElementById("input").value;
+  let res = await fetch(`http://127.0.0.1:8000/chat?query=${query}`);
+  let data = await res.json();
+  document.getElementById("output").innerText = data.response;
+}
+</script>
+
+</body>
+</html>
